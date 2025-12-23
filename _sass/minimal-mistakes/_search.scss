@@ -60,6 +60,37 @@
   display: inline;
 }
 
+.theme-toggle-panel {
+  position: fixed;
+  inset-inline-start: 1rem;
+  top: 6rem;
+  z-index: 35;
+  transform: translateY(-50%);
+}
+
+.theme-toggle--floating {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 999px;
+  border: 1px solid $border-color;
+  background-color: rgba($background-color, 0.9);
+  box-shadow: 0 0.4rem 1rem rgba(#000, 0.08);
+  color: inherit;
+
+  &:focus-visible {
+    outline: 2px solid $primary-color;
+    outline-offset: 2px;
+  }
+}
+
+@include breakpoint(max-width $small) {
+  .theme-toggle-panel {
+    inset-inline-start: 0.75rem;
+    top: 5rem;
+    transform: none;
+  }
+}
+
 .search-icon {
   width: 100%;
   height: 100%;

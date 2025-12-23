@@ -10,6 +10,13 @@
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}" dir="{% if site.rtl %}rtl{% else %}ltr{% endif %}">
+    <div class="theme-toggle-panel" aria-label="Color theme">
+      <button class="theme-toggle theme-toggle--floating" type="button" aria-pressed="false">
+        <span class="visually-hidden">Toggle dark mode</span>
+        <i class="fas fa-moon theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></i>
+        <i class="fas fa-sun theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></i>
+      </button>
+    </div>
     {% include_cached skip-links.html %}
     {% include_cached masthead.html %}
 
