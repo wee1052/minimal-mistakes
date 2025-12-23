@@ -32,6 +32,89 @@ $(document).ready(function () {
     }, 400);
   });
 
+  // Theme toggle
+  var themeStorageKey = window.themeStorageKey || "mm-color-scheme";
+  var darkStylesheet = document.getElementById("dark-theme");
+  var themeToggle = document.querySelector(".theme-toggle");
+  var storedTheme = null;
+  var hasStoredPreference = false;
+
+  try {
+    storedTheme = localStorage.getItem(themeStorageKey);
+    hasStoredPreference = !!storedTheme;
+  } catch (e) {
+    storedTheme = null;
+    hasStoredPreference = false;
+  }
+
+  var getPreferredTheme = function () {
+    if (storedTheme) {
+      return storedTheme;
+    }
+
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+
+    return "light";
+  };
+
+  var updateThemeToggleState = function (theme) {
+    if (!themeToggle) return;
+    themeToggle.setAttribute("aria-pressed", theme === "dark");
+    themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  };
+
+  var applyTheme = function (theme, persist) {
+    if (darkStylesheet) {
+      darkStylesheet.media = theme === "dark" ? "all" : "not all";
+    }
+
+    document.documentElement.setAttribute("data-theme", theme);
+
+    if (persist) {
+      hasStoredPreference = true;
+      try {
+        localStorage.setItem(themeStorageKey, theme);
+        storedTheme = theme;
+      } catch (e) {
+        hasStoredPreference = false;
+      }
+    }
+
+    updateThemeToggleState(theme);
+  };
+
+  var currentTheme = document.documentElement.getAttribute("data-theme") || getPreferredTheme();
+  applyTheme(currentTheme, hasStoredPreference);
+
+  if (window.matchMedia) {
+    var prefersDarkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (prefersDarkQuery.addEventListener) {
+      prefersDarkQuery.addEventListener("change", function (event) {
+        if (hasStoredPreference) return;
+        currentTheme = event.matches ? "dark" : "light";
+        applyTheme(currentTheme, false);
+      });
+    } else if (prefersDarkQuery.addListener) {
+      prefersDarkQuery.addListener(function (event) {
+        if (hasStoredPreference) return;
+        currentTheme = event.matches ? "dark" : "light";
+        applyTheme(currentTheme, false);
+      });
+    }
+  }
+
+  if (themeToggle) {
+    updateThemeToggleState(currentTheme);
+
+    themeToggle.addEventListener("click", function () {
+      currentTheme = currentTheme === "dark" ? "light" : "dark";
+      applyTheme(currentTheme, true);
+    });
+  }
+
   // Smooth scrolling
   var scroll = new SmoothScroll('a[href*="#"]', {
     offset: 20,

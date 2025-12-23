@@ -10,14 +10,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
-  {% if site.enable_copy_code_button -%}
-    window.enable_copy_code_button = true;
-  {%- endif %}
+  (function () {
+    var docEl = document.documentElement;
+    docEl.className = docEl.className.replace(/\bno-js\b/g, '') + ' js ';
+
+    var storageKey = 'mm-color-scheme';
+    var theme = 'light';
+
+    try {
+      var storedTheme = localStorage.getItem(storageKey);
+      if (storedTheme) {
+        theme = storedTheme;
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        theme = 'dark';
+      }
+    } catch (e) {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        theme = 'dark';
+      }
+    }
+
+    docEl.setAttribute('data-theme', theme);
+    window.themeStorageKey = storageKey;
+    window.initialTheme = theme;
+
+    {% if site.enable_copy_code_button -%}
+      window.enable_copy_code_button = true;
+    {%- endif %}
+  })();
 </script>
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}" id="dark-theme" media="(prefers-color-scheme: dark)">
+<script>
+  (function () {
+    var darkStylesheet = document.getElementById('dark-theme');
+    if (!darkStylesheet) return;
+    var theme = window.initialTheme || document.documentElement.getAttribute('data-theme');
+    darkStylesheet.media = theme === 'dark' ? 'all' : 'not all';
+  })();
+</script>
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
 
