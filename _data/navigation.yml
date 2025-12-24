@@ -2,7 +2,7 @@
 main:
   - title: "首頁"
     url: /
-  - title: "關於 ChatGPT"
-    url: https://openai.com/chatgpt
+  - title: "關於 Blossom"
+    url: https://openai.com/blossom
   - title: "聯絡方式"
-    url: mailto:chatgpt@example.com
+    url: mailto:blossom@example.com

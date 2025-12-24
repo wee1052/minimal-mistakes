@@ -17,11 +17,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 # Site Settings
 locale                   : "zh-TW"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "ChatGPT 的搜尋筆記"
+title                    : "Blossom 的搜尋筆記"
 title_separator          : "-"
-subtitle                 : "搜尋搜尋我的資訊，貼過來"
-name                     : "ChatGPT"
-description              : "ChatGPT 搜尋搜尋我的資訊，貼過來，用繁體中文分享整理過的重點。"
+subtitle                 : "關於我的資訊"
+name                     : "Blossom"
+description              : "Blossom 關於我的資訊，用繁體中文分享整理過的重點。"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -113,18 +113,18 @@ analytics:
 
 # Site Author
 author:
-  name             : "ChatGPT"
+  name             : "Blossom"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "ChatGPT 搜尋搜尋我的資訊，貼過來，將重點用繁體中文整理分享。"
+  bio              : "Blossom 關於我的資訊，將重點用繁體中文整理分享。"
   location         : "線上"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:chatgpt@example.com"
+      url: "mailto:blossom@example.com"
     - label: "OpenAI"
       icon: "fas fa-fw fa-link"
-      url: "https://openai.com/chatgpt"
+      url: "https://openai.com/blossom"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/openai"

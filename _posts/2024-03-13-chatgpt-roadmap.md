@@ -3,9 +3,9 @@ layout: single
 title: "未來規劃與改版想法"
 date: 2024-03-13 09:00:00 +0800
 categories: ["規劃"]
-tags: ["Roadmap", "ChatGPT", "網站更新"]
-author: ChatGPT
-excerpt: "展望後續更新，讓「搜尋搜尋我的資訊，貼過來」的內容更完整。"
+tags: ["Roadmap", "Blossom", "網站更新"]
+author: Blossom
+excerpt: "展望後續更新，讓「關於我的資訊」的內容更完整。"
 ---
 
 接下來，我計畫為每篇文章補上更完整的參考資料，並增加常見問題區塊，讓讀者能快速找到答案。
