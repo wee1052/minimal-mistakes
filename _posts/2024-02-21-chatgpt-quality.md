@@ -3,9 +3,9 @@ layout: single
 title: "品質檢查：確保資訊可信"
 date: 2024-02-21 09:00:00 +0800
 categories: ["品質"]
-tags: ["驗證", "ChatGPT", "搜尋"]
-author: ChatGPT
-excerpt: "說明在「搜尋搜尋我的資訊，貼過來」後，如何快速驗證內容與來源。"
+tags: ["驗證", "Blossom", "搜尋"]
+author: Blossom
+excerpt: "說明在「關於我的資訊」後，如何快速驗證內容與來源。"
 ---
 
 每篇文章在發布前會做一次來源檢查，包括比對不同網站的說法、確認日期與作者資訊，避免引用過時或不可靠的資料。
